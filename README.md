@@ -5,7 +5,6 @@ Cookie Manager for React Native
 This module was ported from [joeferraro/react-native-cookies](https://github.com/joeferraro/react-native-cookies). This would not exist without the work of the original author, [Joe Ferraro](https://github.com/joeferraro).
 
 ## Important notices & Breaking Changes
-- **v5.0.0**: Peer Dependency of >= React Native 0.60.2
 - **v4.0.0**: Android SDK version bumpted to 21
 - **v3.0.0**: Remove React Native Core dependencies, CookieManager.set() support for Android
 - **v2.0.0**: Package name updated to `@react-native-community/cookies`.
@@ -16,9 +15,9 @@ This module was ported from [joeferraro/react-native-cookies](https://github.com
 
 ## Platforms Supported
 
-✅ iOS  
-✅ Android  
-❌ Expo is working on their own cookie support (https://github.com/expo/expo/issues/6756)
+- [x] iOS
+- [x] Android
+- [ ] Expo (https://github.com/react-native-community/cookies/issues/17)
 
 Currently lacking support for Windows, macOS, and web. Support for these platforms will be created when there is a need for them. Starts with a posted issue.
 

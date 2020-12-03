@@ -82,7 +82,16 @@ RCT_EXPORT_METHOD(
     rejecter:(RCTPromiseRejectBlock)reject) {
     
     NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:@{@"Set-Cookie": cookie} forURL:url];
-    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:cookies forURL:url mainDocumentURL:nil];
+    
+        for (int i = 0; i < cookies.count; i++) {
+            NSHTTPCookie *cookie = [cookies objectAtIndex:i];
+            NSMutableDictionary *properties = [[cookie properties] mutableCopy];
+            NSDate *expiresDate = [NSDate dateWithTimeIntervalSinceNow:3600*24*30*12];
+            properties[NSHTTPCookieExpires] = expiresDate;
+            [properties removeObjectForKey:NSHTTPCookieDiscard];
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:[NSHTTPCookie cookieWithProperties:properties]];
+        }
+//    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:cookies forURL:url mainDocumentURL:nil];
     resolve(@(YES));
 }
 
